@@ -10,10 +10,11 @@ import 'package:portfolio_flutter/widget/personal-container.dart';
 class AboutMePage extends StatefulWidget {
   const AboutMePage({
     super.key,
-    required this.height,
+    required this.height, required this.deviceType,
   });
 
   final double height;
+  final String deviceType;
 
   @override
   State<AboutMePage> createState() => _AboutMePageState();
@@ -40,9 +41,16 @@ class _AboutMePageState extends State<AboutMePage> {
       width: double.infinity,
       child: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: MediaQuery.of(context).size.width > 850 ? 100.0 : 50,
-          vertical: 50.0
+          horizontal: widget.deviceType == 'web' 
+            ? 100.0 
+            : widget.deviceType == 'tablet' 
+            ? 50 
+            : 30,
+          vertical: widget.deviceType == 'mobile' 
+            ? 20
+            : 50
         ),
+
         child: Column(
           children: [
             //heading
@@ -54,6 +62,7 @@ class _AboutMePageState extends State<AboutMePage> {
             //containers
             Expanded(
               child: MediaQuery.of(context).size.width >  650 ? 
+              //HORIZONTAL
               Row(
                 children: [
                    PersonalExpandedContainer(
@@ -85,8 +94,9 @@ class _AboutMePageState extends State<AboutMePage> {
                   ),
                 ],
               )
-              : 
-              Column(
+
+              //VERTICAL
+              : Column(
                 children: [
                   PersonalExpandedContainer(
                     expanded: isFirstExpanded,

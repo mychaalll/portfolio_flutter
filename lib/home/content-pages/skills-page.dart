@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_flutter/data/skills-data.dart';
 import 'package:portfolio_flutter/utils/colors.dart';
+import 'package:portfolio_flutter/utils/responsive.dart';
 import 'package:portfolio_flutter/utils/text-style.dart';
 import 'package:portfolio_flutter/widget/page-header.dart';
 import 'package:portfolio_flutter/widget/skills-card.dart';
@@ -38,14 +39,22 @@ class _SkillsPageState extends State<SkillsPage> {
 
   @override
   Widget build(BuildContext context) {
+    ResponsiveLayout responsiveLayout = ResponsiveLayout(context);
+    String deviceType = responsiveLayout.getDeviceType();
     return Container(
       height: widget.height - 80,
       color: AppColors.backColor,
       width: double.infinity,
       child: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: MediaQuery.of(context).size.width > 850 ? 100.0 : 50,
-          vertical: 50.0
+          horizontal: deviceType == 'web' 
+            ? 100.0 
+            : deviceType == 'tablet' 
+            ? 50 
+            : 30,
+          vertical: deviceType == 'mobile' 
+            ? 20
+            : 50
         ),
         child: Column(
           children: [
@@ -145,7 +154,13 @@ class _SkillsPageState extends State<SkillsPage> {
                 itemBuilder: (context, index){
                   return Container(
                     child: GridView.builder(
-                      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                      gridDelegate: deviceType == 'mobile' ? 
+                      SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 20,
+                        mainAxisSpacing: 20,
+                      )
+                      : SliverGridDelegateWithMaxCrossAxisExtent(
                         maxCrossAxisExtent: 250,
                         crossAxisSpacing: 20,
                         mainAxisSpacing: 20,

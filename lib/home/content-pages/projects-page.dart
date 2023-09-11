@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_flutter/data/projects-data.dart';
 import 'package:portfolio_flutter/utils/colors.dart';
+import 'package:portfolio_flutter/utils/responsive.dart';
 import 'package:portfolio_flutter/widget/page-header.dart';
 import 'package:portfolio_flutter/widget/project-card-mobile.dart';
 import 'package:portfolio_flutter/widget/project-card.dart';
@@ -17,14 +18,22 @@ class ProjectsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ResponsiveLayout responsiveLayout = ResponsiveLayout(context);
+    String deviceType = responsiveLayout.getDeviceType();
     return Container(
       height: height - 80,
       width: double.infinity,
       color: AppColors.backColor,
       child: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: MediaQuery.of(context).size.width > 850 ? 100.0 : 50,
-          vertical: 50.0
+          horizontal: deviceType == 'web' 
+            ? 100.0 
+            : deviceType == 'tablet' 
+            ? 50 
+            : 30,
+          vertical: deviceType == 'mobile' 
+            ? 20
+            : 50
         ),
         child: Column(
           children: [
@@ -55,12 +64,9 @@ class ProjectsPage extends StatelessWidget {
                         );
                       }
                       else{
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ProjectCardMobile(
-                            index: index,
+                        return ProjectCardMobile(
+                          index: index,
 
-                          )
                         );
                       }
                     },

@@ -5,6 +5,7 @@ import 'package:portfolio_flutter/home/content-pages/landing-page.dart';
 import 'package:portfolio_flutter/home/content-pages/projects-page.dart';
 import 'package:portfolio_flutter/home/content-pages/skills-page.dart';
 import 'package:portfolio_flutter/utils/colors.dart';
+import 'package:portfolio_flutter/utils/responsive.dart';
 import 'package:portfolio_flutter/utils/text-style.dart';
 import 'package:portfolio_flutter/widget/navigation-buttons.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -18,11 +19,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   ScrollController _controller = new ScrollController();
+  
 
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
+    ResponsiveLayout responsiveLayout = ResponsiveLayout(context);
+    String deviceType = responsiveLayout.getDeviceType();
+
     return Scaffold(
       appBar: AppBar(
       elevation: 4,
@@ -31,19 +36,13 @@ class _HomePageState extends State<HomePage> {
       title: Container(
         child: Row(
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(
-                  'Mychal\'s Portfolio',
-                  style: AppTextStyles.subtitle_white,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                SizedBox(height: 10),
-              ],
+            Text(
+              'Mychal\'s Portfolio',
+              style: AppTextStyles.subtitle_white,
+              overflow: TextOverflow.ellipsis,
             ),
             Spacer(),
-            MediaQuery.of(context).size.width > 850
+            deviceType == 'web'
                 ? Row(
                     children: [
                       NavButtons(
@@ -120,20 +119,20 @@ class _HomePageState extends State<HomePage> {
       // Display the drawer
       
     ),
-    endDrawer: width <= 850 
-      ? MyDrawer(
+    endDrawer: deviceType == 'web'
+      ? null
+      : MyDrawer(
           controller: _controller,
           height: height,
-        )
-      : null,
+        ),
 
       body: SingleChildScrollView(
         controller: _controller,
         child: Column(
           children: [
-            LandingPage(height: height),
+            LandingPage(height: height, deviceType: deviceType,),
             PageDivider(),
-            AboutMePage(height: height),
+            AboutMePage(height: height, deviceType: deviceType,),
             PageDivider(),
             SkillsPage(height: height),
             PageDivider(),

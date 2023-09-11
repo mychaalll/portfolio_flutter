@@ -19,7 +19,7 @@ class _ProjectCardStateMobile extends State<ProjectCardMobile> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 30.0),
+      padding: const EdgeInsets.only(bottom: 10.0),
       child: GestureDetector(
         onTap: () {
           setState(() {
@@ -150,7 +150,7 @@ class _ProjectCardStateMobile extends State<ProjectCardMobile> {
                     border: Border.all(width: 2),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: const EdgeInsets.all(15.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -159,33 +159,36 @@ class _ProjectCardStateMobile extends State<ProjectCardMobile> {
                           child: Text(
                             projectList[widget.index].title,
                             textAlign: TextAlign.start,
-                            style: AppTextStyles.subtitle_white,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                        SizedBox(height: 10),
-                        Expanded(
-                          flex: 4,
-                          child: SingleChildScrollView(
-                            child: Text(
-                              projectList[widget.index].details,
-                              textAlign: TextAlign.justify,
-                              style: AppTextStyles.parag_white,
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 10),
-                        Expanded(
-                          flex: 1,
-                          child: Text(
-                            'Used: ${projectList[widget.index].tools.join(", ")}',
-                            textAlign: TextAlign.start,
                             style: AppTextStyles.content_white,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
+                        SizedBox(height: 20),
+                        Expanded(
+                          flex: 5,
+                          child: SingleChildScrollView(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  projectList[widget.index].details,
+                                  textAlign: TextAlign.justify,
+                                  style: AppTextStylesMobile.small_white,
+                                ),
+                                SizedBox(height: 20),
+                                Text(
+                                  'Used: ${projectList[widget.index].tools.join(", ")}',
+                                  textAlign: TextAlign.start,
+                                  style: AppTextStylesMobile.small_white,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        
                       ],
                     ),
                   ),
