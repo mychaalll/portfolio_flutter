@@ -230,7 +230,7 @@ class MyDrawer extends StatelessWidget {
             SizedBox(height: 20),
             GestureDetector(
               onTap: ()async{
-                Uri url = Uri.parse('https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley');
+                Uri url = Uri.parse('https://drive.google.com/uc?export=download&id=1oQJZLGzeNLquq9QCp_X4ARqKaXip6YFS');
                 if( await canLaunchUrl(url)){
                   await launchUrl(url);
                 }

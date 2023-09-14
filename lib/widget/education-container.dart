@@ -23,7 +23,7 @@ class EducExpandedContainer extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: AnimatedContainer(
-        padding: height < 700 ? EdgeInsets.all(15) : EdgeInsets.all(30),
+        padding: deviceType == 'mobile' ? EdgeInsets.all(15) : EdgeInsets.all(30),
         duration: Duration(milliseconds: 300),
         height: 
           //row form
@@ -48,7 +48,7 @@ class EducExpandedContainer extends StatelessWidget {
               Text(
                 'EDUCATIONAL BACKGROUND',
                 overflow: TextOverflow.ellipsis,
-                style: AppTextStyles.subtitle_white,
+                style: deviceType == 'mobile' ? AppTextStylesMobile.content_white_bold : AppTextStyles.subtitle_white,
               ),
               SizedBox(height: 20),
               Expanded(

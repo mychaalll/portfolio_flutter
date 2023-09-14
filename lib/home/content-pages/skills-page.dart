@@ -67,7 +67,7 @@ class _SkillsPageState extends State<SkillsPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  height: 30,
+                  height: deviceType == 'mobile' ? 20 : 30,
                   width: 5,
                   decoration: BoxDecoration(
                     color: AppColors.purple,
@@ -80,7 +80,7 @@ class _SkillsPageState extends State<SkillsPage> {
                   child: Text(
                     skillTitles[currentPage],
                     textAlign: TextAlign.start,
-                    style: AppTextStyles.subtitle_white,
+                    style: deviceType == 'mobile' ? AppTextStylesMobile.content_white_bold : AppTextStyles.subtitle_white,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                   ),

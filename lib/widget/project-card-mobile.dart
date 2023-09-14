@@ -141,7 +141,6 @@ class _ProjectCardStateMobile extends State<ProjectCardMobile> {
               _isTapped ? Expanded(
                 child: Container(
                   decoration: BoxDecoration(
-                   
                     color: AppColors.blue,
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(12),
@@ -154,15 +153,12 @@ class _ProjectCardStateMobile extends State<ProjectCardMobile> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Expanded(
-                          flex: 1,
-                          child: Text(
-                            projectList[widget.index].title,
-                            textAlign: TextAlign.start,
-                            style: AppTextStyles.content_white,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
+                        Text(
+                          projectList[widget.index].title,
+                          textAlign: TextAlign.start,
+                          style: AppTextStylesMobile.content_white_bold,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
                         SizedBox(height: 20),
                         Expanded(

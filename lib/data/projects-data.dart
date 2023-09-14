@@ -18,6 +18,22 @@ class Projects{
 
 List<Projects> projectList = [
   Projects(
+    thumbnail: 'assets/images/chalgpt.jpg',
+    title: 'Chal-GPT',
+    date: '2023',
+    details: 'Chal-GPT, a mobile app inspired by ChatGPT, offering users a familiar and powerful AI chat experience. It goes a step further with a robust account system that seamlessly integrates OpenAI API for intelligent responses and relies on Firebase for secure data storage, ensuring a personalized and secure chat environment.',
+    tools: ['Flutter','Firebase'],
+    toolsIcon:['assets/images/flutter.png', 'assets/images/firebase.png'],
+  ),
+  Projects(
+    thumbnail: 'assets/images/pandesalApp.jpg',
+    title: 'Santos Pandesal App',
+    date: '2023',
+    details: 'Pandesal App is an ongoing flutter project, designed to mimic an online shopping experience for bakeries. With its user-friendly features such as an efficient "Add to Cart" system, a comprehensive product showcase, and convenient pickup or delivery options, it aims to deliver a seamless and delightful shopping experience for bakery customers.',
+    tools: ['Flutter',],
+    toolsIcon:['assets/images/flutter.png',],
+  ),
+  Projects(
     thumbnail: 'assets/images/geriassis.png',
     title: 'GeriAssis',
     date: '2022-2023',
